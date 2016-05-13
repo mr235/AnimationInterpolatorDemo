@@ -35,7 +35,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 		public HesitateInterpolator() {}
 		public float getInterpolation(float t) {
 			float x=2.0f*t-1.0f;
-			return 0.5f*(x*x*x + 1.0f);
+			float value = 0.5f*(x*x*x + 1.0f);
+
+			float v = 0.0f;
+			if (t<0.1f) {
+				v=3*t;
+			} else if (t>0.9f) {
+				v = 3*t-2;
+			} else {
+				v = 0.5f*t+0.25f;
+			}
+			return v;
 		}
 	}
 }
